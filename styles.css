@@ -1,0 +1,149 @@
+html {
+  zoom: 0.78;
+}
+
+table thead {
+    background: rgb(47, 113, 133);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+  }
+  
+  tr {
+    height: 1em;
+  }
+  td {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  } 
+  .flex-container {
+    display: flex;
+  }
+  tbody tr:nth-child(2n + 1) {
+    background-color: #c7c7c7;
+  }
+  
+  .inline p {
+    display: inline;
+  }
+  
+  .contact-info p, .recipient-info p {
+    margin: 0;
+  }
+  
+  .flex-container {
+      display:-webkit-flex;
+      display:flex;
+      list-style-type:none;
+      padding:0;
+      justify-content:flex-end;
+  }
+  .contact-info {
+    margin-right:auto;
+  }
+  .container {
+    width: 7in;
+    font-family: sans-serif;
+    margin: 1in 0.5in 1in 0.5in;
+  }
+  
+  .xl {
+    font-size: 2.8em;
+    font-weight: 300;
+    color:  rgb(47, 113, 133);
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .white-font {
+    color: #ffffff;
+  }
+  
+  .contact-info, .recipient-info {
+    padding-bottom: 1em;
+  }
+  
+  .header {
+    margin: 0 0 0.5em 0;
+  }
+  
+  
+  td:nth-child(1) {
+    width: 20%
+  }
+  
+  td:nth-child(2) {
+    width: 40%
+  }
+  
+  .bill-to {
+    color: #ffffff;
+    width: 20%;
+    background: rgb(47, 113, 133);
+  }
+  
+  .italic {
+    font-style: italic;
+  }
+  
+  .footer {
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer p {
+    font-size: 0.8em;
+    margin: 0;
+    align-self: center;
+  }
+  
+  .recipient-info {
+    padding: 2.5em 0 2.5em 0;
+  }
+  
+  tbody td:nth-child(3):not(:empty):before {
+    content: "$";
+    float: left;
+  }
+  
+  tbody td:nth-child(5):not(:empty):before {
+    content: "$";
+    float: left;
+    padding-left: 0.5em;
+  }
+  
+  tbody td:nth-child(4):not(:empty):after {
+    content: "%";
+  }
+  
+  td:nth-child(3), td:nth-child(5) {
+    text-align: right;
+  }
+  
+  td:nth-child(4) {
+    text-align: center;
+  }
+  
+  tr {
+    height: 1.3em;
+  }
+  
+  #total td {
+    background-color: white;
+    border: 0;
+  }
+  
+  #total :nth-child(5) {
+     border-bottom: 3px double;
+  }
+  
+  #total :nth-child(4):after {
+    content: "";
+  }

@@ -1,0 +1,7 @@
+Resources:
+    GeneratePDF:
+        Type: AWS::Serverless::Function
+        Properties:
+            Handler: index.handler
+            Runtime: nodejs8.10
+            Timeout: 10

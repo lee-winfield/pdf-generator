@@ -1,0 +1,35 @@
+{
+    "lineItems":  [
+        {
+            "serviceDate": "12/2",
+            "description": "some text",
+            "amount": 120,
+            "percentage": 58
+        },
+        {
+            "serviceDate": "12/2",
+            "description": "some text",
+            "amount": 120,
+            "percentage": 58
+        },
+        {
+            "serviceDate": "12/2",
+            "description": "some text",
+            "amount": 120,
+            "percentage": 58
+        },
+        {
+            "serviceDate": "12/2",
+            "description": "some text",
+            "amount": 120,
+            "percentage": 58
+        }
+    ],
+    "recipientInfo": {
+        "name": "Relson Gracie Jiu-Jitsu Cleveland LLC",
+        "address1": "4679 Hamann Parkway",
+        "address2": "Willoughby, OH 44094",
+        "phone": "440-942-7179"
+    },
+    "invoiceNum": 45
+}
