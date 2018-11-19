@@ -2,6 +2,14 @@ const PDF = require('html-pdf')
 const AWS = require('aws-sdk')
 const createHTML = require('create-html')
 
+const formatCurrency = (num) => {
+    const roundedNum = Math.round(num * 100).toString()
+    const numDollars = roundedNum.substring(0, roundedNum.length - 2) || '0'
+    const numCents = roundedNum.substring(roundedNum.length - 2)
+  
+    return `${numDollars}.${numCents.length === 1 ? numCents + '0' : numCents }`
+}
+
 
 const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
     const date = new Date()
@@ -9,7 +17,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
     const totalBill = lineItems.reduce((acc, li) => acc + li.percentage * li.amount / 100, 0)
 
     const tableRows = lineItems.map(li =>
-        `<tr><td>${li.serviceDate}</td><td>${li.description}</td><td>${li.amount}</td><td>${li.percentage}</td><td>${li.percentage * li.amount / 100}</td></tr>`
+        `<tr><td>${li.serviceDate}</td><td>${li.description}</td><td>${formatCurrency(li.amount)}</td><td>${li.percentage}</td><td>${formatCurrency(li.percentage * li.amount / 100)}</td></tr>`
     ).join('')
 
     const table = `<div class="container">
@@ -61,7 +69,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
                     <td></td>
                     <td></td>
                     <td>TOTAL</td>
-                    <td>${totalBill}</td>
+                    <td>${formatCurrency(totalBill)}</td>
                 </tr>
             </tbody>
         </table>
@@ -83,45 +91,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
 
 const lambda = async (event) => {
     const s3 = new AWS.S3()
-
     const { lineItems, recipientInfo, invoiceNum } = event
-
-    // const lineItems = [
-    //     {
-    //         serviceDate: '12/2',
-    //         description: 'some text',
-    //         amount: 120,
-    //         percentage: 58,
-    //     },
-    //     {
-    //         serviceDate: '12/2',
-    //         description: 'some text',
-    //         amount: 120,
-    //         percentage: 58,
-    //     },
-    //     {
-    //         serviceDate: '12/2',
-    //         description: 'some text',
-    //         amount: 120,
-    //         percentage: 58,
-    //     },
-    //     {
-    //         serviceDate: '12/2',
-    //         description: 'some text',
-    //         amount: 120,
-    //         percentage: 58,
-    //     },
-    // ]
-
-
-    // const recipientInfo = {
-    //     name: 'Relson Gracie Jiu-Jitsu Cleveland LLC',
-    //     address1: '4679 Hamann Parkway',
-    //     address2: 'Willoughby, OH 44094',
-    //     phone: '440-942-7179',
-    // }
-
-    // const invoiceNum = 44
 
     const phantomPath = './phantomjs'
     const options = {
