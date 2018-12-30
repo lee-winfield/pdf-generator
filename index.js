@@ -127,7 +127,7 @@ const lambda = async (event) => {
 
   const params = {
     Bucket: 'cjwinfield',
-    Key: 'test.pdf',
+    Key: `recipient/${invoiceNum}.pdf`,
     Body: stream,
   }
   const res = await s3.putObject(params).promise()
