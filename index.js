@@ -19,7 +19,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
   const tableRows = lineItems.map(li =>
     `<tr>
       <td>${li.serviceDate}</td>
-      <td>${li.description}</td>
+      <td>${li.name}</td>
       <td>${formatCurrency(li.amount)}</td>
       <td>${li.percentage}</td>
       <td>${formatCurrency(li.percentage * li.amount / 100)}</td>
