@@ -23,6 +23,12 @@ table thead {
   .flex-container {
     display: flex;
   }
+
+  .doc-heading {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
   tbody tr:nth-child(2n + 1) {
     background-color: #c7c7c7;
   }
@@ -146,4 +152,9 @@ table thead {
   
   #total :nth-child(4):after {
     content: "";
+  }
+
+  .center {
+    margin-right: auto;
+    margin-left: auto;
   }

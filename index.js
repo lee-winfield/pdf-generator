@@ -28,7 +28,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
 
   const table = `<div class="container">
     <div class="flex-container">
-      <h1 class="xl">INVOICE</h1>
+      <h1 class="doc-heading xl">INVOICE</h1>
     </div>
     <div>
       <h3 class="header">Winfield Supply Company</h3>
@@ -80,8 +80,8 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
         </tbody>
       </table>
       <div class="footer">
-      <p>Make all checks payable to Claudia Winfield</p>
-      <p class="bold italic">THANK YOU FOR YOUR BUSINESS!</p>
+        <p class="center" >Make all checks payable to Claudia Winfield</p>
+        <p class="bold italic center">THANK YOU FOR YOUR BUSINESS!</p>
       </div>
     </div>
   </div>`
