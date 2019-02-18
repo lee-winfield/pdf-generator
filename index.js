@@ -61,11 +61,11 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
       <table>
         <thead class="bold white-font">
           <tr>
-            <td>Service Date</td>
-            <td>Description</td>
-            <td>Bill Total</td>
-            <td>% of Bill</td>
-            <td>Total Owed</td>
+            <td class="text-center">Service Date</td>
+            <td class="text-center">Description</td>
+            <td class="text-center">Bill Total</td>
+            <td class="text-center">% of Bill</td>
+            <td class="text-center">Total Owed</td>
           </tr>
         </thead>
         <tbody>
@@ -91,7 +91,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
     body: table,
     zoom: 0.5,
     base: './',
-    css: 'https://s3.us-east-2.amazonaws.com/cjwinfield.com/styles.css',
+    css: 'https://s3.us-east-2.amazonaws.com/cjwinfield/styles.css',
   })
 }
 
