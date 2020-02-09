@@ -1,7 +1,11 @@
-process.env['FONTCONFIG_PATH'] = process.env['LAMBDA_TASK_ROOT'];
+const path = require('path')
+process.env['FONTCONFIG_PATH'] = path.join(process.env['LAMBDA_TASK_ROOT'], 'fonts');
+process.env['LD_LIBRARY_PATH'] = path.join(process.env['LAMBDA_TASK_ROOT'], 'fonts');
+console.log("path: ", process.env['FONTCONFIG_PATH'])
 const PDF = require('html-pdf')
 const AWS = require('aws-sdk')
 const createHTML = require('create-html')
+console.log("path: ", process.env['FONTCONFIG_PATH'])
 
 const formatCurrency = (num) => {
   const roundedNum = Math.round(num * 100).toString()
