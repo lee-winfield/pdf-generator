@@ -1,3 +1,4 @@
+process.env['FONTCONFIG_PATH'] = process.env['LAMBDA_TASK_ROOT'];
 const PDF = require('html-pdf')
 const AWS = require('aws-sdk')
 const createHTML = require('create-html')
@@ -7,7 +8,7 @@ const formatCurrency = (num) => {
   const numDollars = roundedNum.substring(0, roundedNum.length - 2) || '0'
   const numCents = roundedNum.substring(roundedNum.length - 2)
 
-  return `${numDollars}.${numCents.length === 1 ? numCents + '0' : numCents }`
+  return `${numDollars}.${numCents.length === 1 ? numCents + '0' : numCents}`
 }
 
 
@@ -97,7 +98,7 @@ const generateDocumentHTML = (lineItems, recipientInfo, invoiceNum) => {
 
 const lambda = async (event) => {
   const s3 = new AWS.S3()
-  const { lineItems, recipientInfo, invoiceNum } = event
+  const { lineItems, recipientInfo, invoiceNum, fileName } = event
 
   const phantomPath = './phantomjs'
   const options = {
@@ -105,12 +106,12 @@ const lambda = async (event) => {
     type: 'pdf',
     "format": "letter",
     "height": "11in",
-    "width": "8.5in", 
+    "width": "8.5in",
   }
   const html = generateDocumentHTML(lineItems, recipientInfo, invoiceNum)
-  const pdf = PDF.create(html,options)
+  const pdf = PDF.create(html, options)
 
-  const createStream = (pdf) => 
+  const createStream = (pdf) =>
     new Promise((resolve, reject) => {
       pdf.toStream((err, stream) => {
         if (err) {
@@ -121,13 +122,13 @@ const lambda = async (event) => {
         }
       })
     })
-  
+
 
   const stream = await createStream(pdf)
 
   const params = {
     Bucket: 'cjwinfield',
-    Key: `recipient/${invoiceNum}.pdf`,
+    Key: `recipient/${fileName}.pdf`,
     Body: stream,
   }
   const res = await s3.putObject(params).promise()
