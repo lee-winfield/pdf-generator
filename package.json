@@ -11,6 +11,6 @@
   "dependencies": {
     "aws-sdk": "^2.311.0",
     "create-html": "^4.1.0",
-    "html-pdf": "^2.2.0"
+    "html-pdf": "^3.0.1"
   }
 }
